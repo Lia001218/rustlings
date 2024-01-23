@@ -7,7 +7,7 @@
 // Execute `rustlings hint structs3` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
+
 
 #[derive(Debug)]
 struct Package {
@@ -31,12 +31,19 @@ impl Package {
         }
     }
 
-    fn is_international(&self) -> ??? {
+    fn is_international(&self) -> bool {
         // Something goes here...
+        if self.sender_country != self.recipient_country {
+            true
+        } else {
+            false
+        }
     }
 
-    fn get_fees(&self, cents_per_gram: u32) -> ??? {
+    fn get_fees(&self, cents_per_gram: u32) -> u32 {
         // Something goes here...
+
+        cents_per_gram* self.weight_in_grams
     }
 }
 
@@ -69,7 +76,6 @@ mod tests {
         let recipient_country = sender_country.clone();
 
         let package = Package::new(sender_country, recipient_country, 1200);
-
         assert!(!package.is_international());
     }
 
